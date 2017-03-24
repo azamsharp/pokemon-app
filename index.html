@@ -1,0 +1,36 @@
+<html>
+<head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+<ul id="pokemonList">
+  </ul>
+
+</body>
+
+</html>
+
+<script>
+
+$(document).ready(function(){
+
+    $.get("http://localhost:3000/pokemon/all",function(data){
+
+        $.each(data,function(index,item){
+
+            var pokemonList = $("#pokemonList");
+            pokemonList.append("<li>" + item.name + "</li>");
+            var img = $("<img>").css({width: "50"}).attr("src",item.url);
+            $("#pokemonList").append(img);
+
+        });
+
+
+    });
+
+
+});
+
+</script>
